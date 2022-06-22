@@ -26,5 +26,6 @@ public class ClientService {
         loan = loanService.calculateInstallments(loan);
 
         System.out.println(">>> Loan installments: " + loan.getInstallments());
+        System.out.println(">>> Loan counry: " + loan.getCountry());
     }
 }

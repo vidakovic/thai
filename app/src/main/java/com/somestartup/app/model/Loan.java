@@ -8,6 +8,7 @@ public class Loan {
     private Date end;
     private Integer installments;
     private Double amount;
+    private String country;
 
     public String getId() {
         return id;
@@ -47,5 +48,13 @@ public class Loan {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }
