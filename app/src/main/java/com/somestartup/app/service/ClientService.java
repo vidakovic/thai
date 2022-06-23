@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Service
@@ -24,8 +25,10 @@ public class ClientService {
         System.out.println(">>> Loan ID: " + loan.getId());
 
         loan = loanService.calculateInstallments(loan);
+        loan = loanService.calculateInterest(loan);
 
         System.out.println(">>> Loan installments: " + loan.getInstallments());
-        System.out.println(">>> Loan counry: " + loan.getCountry());
+        System.out.println(">>> Loan country: " + loan.getCountry());
+        System.out.println(">>> Loan interest: " + loan.getInterest());
     }
 }
