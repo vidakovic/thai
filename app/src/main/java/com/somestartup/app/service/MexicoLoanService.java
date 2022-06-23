@@ -1,16 +1,14 @@
 package com.somestartup.app.service;
 
 import com.somestartup.app.model.Loan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.UUID;
 
 @Service
 @ConditionalOnProperty(value="thai.country", havingValue="mexico")
-public class MexicoLoanService implements LoanService {
+public class MexicoLoanService extends AbstractLoanService {
 
     @Autowired
     private LoanFeatureTwo featureTwo;
@@ -25,9 +23,9 @@ public class MexicoLoanService implements LoanService {
     private CalculateInterest calc;
 
     public Loan create(Loan loan){
-        loan.setId(UUID.randomUUID().toString());
         loan.setCountry("Mexico");
 
+        loan = loanRepository.save(loan);
 
         return loan;
     }

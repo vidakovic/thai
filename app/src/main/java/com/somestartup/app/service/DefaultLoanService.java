@@ -3,17 +3,15 @@ package com.somestartup.app.service;
 import com.somestartup.app.model.Loan;
 import org.springframework.beans.factory.annotation.Value;
 
-import java.util.UUID;
-
-public class DefaultLoanService implements LoanService {
+public class DefaultLoanService extends AbstractLoanService {
 
     @Value("${thai.country}")
     private String country;
 
     public Loan create(Loan loan) {
-        // TODO: implement this!
-        loan.setId(UUID.randomUUID().toString());
         loan.setCountry(country);
+
+        loan = loanRepository.save(loan);
 
         return loan;
     }

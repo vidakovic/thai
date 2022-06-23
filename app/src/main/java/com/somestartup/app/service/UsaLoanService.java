@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 @ConditionalOnProperty(value = "thai.country", havingValue = "usa")
-public class UsaLoanService implements LoanService {
+public class UsaLoanService extends AbstractLoanService {
 
     @Autowired
     private LoanFeatureOne featureOne;
@@ -26,9 +24,9 @@ public class UsaLoanService implements LoanService {
     private double baseInterest;
 
     public Loan create(Loan loan) {
-        // TODO: implement this!
-        loan.setId(UUID.randomUUID().toString());
         loan.setCountry("USA");
+
+        loan = loanRepository.save(loan);
 
         return loan;
     }
