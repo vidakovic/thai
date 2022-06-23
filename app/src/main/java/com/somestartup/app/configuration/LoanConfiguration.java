@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Random;
+
 @Configuration
 public class LoanConfiguration {
 
@@ -13,5 +15,10 @@ public class LoanConfiguration {
     @ConditionalOnMissingBean(LoanService.class)
     public LoanService loanService() {
         return new DefaultLoanService();
+    }
+
+    @Bean
+    public Random random() {
+        return new Random();
     }
 }

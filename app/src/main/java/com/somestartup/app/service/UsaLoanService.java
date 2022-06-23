@@ -2,6 +2,7 @@ package com.somestartup.app.service;
 
 import com.somestartup.app.model.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,12 @@ public class UsaLoanService implements LoanService {
     private LoanFeatureTwo featureTwo;
     @Autowired
     private LoanFeatureThree featureThree;
+
+    @Autowired
+    private CalculateInterest calc;
+
+    @Value("${usa.interest}")
+    private double baseInterest;
 
     public Loan create(Loan loan) {
         // TODO: implement this!
@@ -34,6 +41,11 @@ public class UsaLoanService implements LoanService {
         // TODO: implement this
         loan.setInstallments(12);
 
+        return loan;
+    }
+
+    public Loan calculateInterest(Loan loan) {
+        calc.calculateInterest(loan, baseInterest);
         return loan;
     }
 

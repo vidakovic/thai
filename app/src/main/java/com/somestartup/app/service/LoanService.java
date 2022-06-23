@@ -6,4 +6,6 @@ public interface LoanService {
     Loan create(Loan loan);
 
     Loan calculateInstallments(Loan loan);
+
+    Loan calculateInterest(Loan loan);
 }

@@ -10,6 +10,8 @@ public class Loan {
     private Double amount;
     private String country;
 
+    private double interest;
+
     public String getId() {
         return id;
     }
@@ -40,6 +42,14 @@ public class Loan {
 
     public void setInstallments(Integer installments) {
         this.installments = installments;
+    }
+
+    public double getInterest() {
+        return interest;
+    }
+
+    public void setInterest(double interest) {
+        this.interest = interest;
     }
 
     public Double getAmount() {

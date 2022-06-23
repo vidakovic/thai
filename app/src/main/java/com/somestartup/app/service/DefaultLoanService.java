@@ -24,4 +24,10 @@ public class DefaultLoanService implements LoanService {
 
         return loan;
     }
+
+    public Loan calculateInterest(Loan loan){
+        loan.setInterest(0.05);
+
+        return loan;
+    }
 }
